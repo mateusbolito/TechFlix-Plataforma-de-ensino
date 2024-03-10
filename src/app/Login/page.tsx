@@ -23,13 +23,13 @@ export default function Login() {
               type="email"
               placeholder="Digite seu Email"
               required
-              className="w-[400px] flex flex-col h-[2.1rem] bg-transparent border rounded-lg border-solid pl-2"
+              className="w-[400px] flex flex-col h-[2.1rem] bg-transparent border rounded-lg border-solid pl-2 text-white"
             />
             <input
               type="password"
               placeholder="Digite sua Senha"
               required
-              className="w-[400px] mt-16 h-[2.1rem] bg-transparent border rounded-lg border-solid pl-2"
+              className="w-[400px] mt-16 h-[2.1rem] bg-transparent border rounded-lg border-solid pl-2 text-white"
             />
             <div className="flex items-center justify-between flex-row pt-4">
               <div className="flex items-center ">
