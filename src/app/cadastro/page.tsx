@@ -48,8 +48,8 @@ export default function Login() {
         },
       }
     );
-
-    console.log(response.data);
+    nameRef.current.value = "";
+    emailRef.current.value = "";
   }
 
   return (
