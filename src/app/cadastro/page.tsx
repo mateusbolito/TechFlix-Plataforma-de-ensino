@@ -3,15 +3,54 @@
 import teste from "../../../public/teste.svg";
 import Image from "next/image";
 import tech from "../../../public/tech.svg";
-import { FaEye, FaUser } from "react-icons/fa";
-import { useState } from "react";
+import { FaEye } from "react-icons/fa";
+import { useEffect, useState, useRef, FormEvent } from "react";
+import { api } from "../../service/axios";
 
+interface CustomerProps {
+  id: string;
+  name: string;
+  email: string;
+  status: boolean;
+}
 export default function Login() {
   const [showpassword, setShowpassword] = useState(false);
+  const [datas, setData] = useState<CustomerProps[]>([]);
+  const nameRef = useRef<HTMLInputElement | null>(null);
+  const emailRef = useRef<HTMLInputElement | null>(null);
 
+  useEffect(() => {
+    getAPI();
+  }, []);
+
+  async function getAPI() {
+    const response = await api.get("/customers");
+    setData(response.data);
+  }
   const visiblePassword = () => {
     setShowpassword(!showpassword);
   };
+
+  async function handleSubmit(event: FormEvent) {
+    event.preventDefault();
+    if (!nameRef.current?.value || !emailRef.current?.value) return;
+
+    const response = await api.post(
+      "/customer",
+      {
+        name: nameRef.current.value,
+        email: emailRef.current.value,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }
+    );
+
+    console.log(response.data);
+  }
 
   return (
     <div className="flex">
@@ -28,12 +67,13 @@ export default function Login() {
         </span>
 
         <div className="flex  items-center justify-center p-10 ">
-          <form action="submit">
+          <form action="submit" onSubmit={handleSubmit}>
             <input
               type="text"
               placeholder="Digite seu nome"
               required
               className="w-[400px]  flex flex-col h-[2.1rem] bg-transparent border rounded-lg border-solid pl-2 text-white"
+              ref={nameRef}
             />
 
             <input
@@ -41,6 +81,7 @@ export default function Login() {
               placeholder="Digite seu Email"
               required
               className="w-[400px] mt-16 flex flex-col h-[2.1rem] bg-transparent border rounded-lg border-solid pl-2 text-white"
+              ref={emailRef}
             />
 
             <div className="relative">
@@ -80,7 +121,9 @@ export default function Login() {
             </div>
           </form>
         </div>
+        <div></div>
       </div>
+
       <div className="w-1/2 h-full relative">
         <Image src={teste} style={{ width: "100%", height: "auto" }} alt="a" />
       </div>
