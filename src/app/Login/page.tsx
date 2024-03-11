@@ -31,6 +31,7 @@ export default function Login() {
               required
               className="w-[400px] mt-16 h-[2.1rem] bg-transparent border rounded-lg border-solid pl-2 text-white"
             />
+
             <div className="flex items-center justify-between flex-row pt-4">
               <div className="flex items-center ">
                 <input type="checkbox" />
