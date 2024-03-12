@@ -1,8 +1,61 @@
+"use client";
+
 import teste from "../../../public/teste.svg";
 import Image from "next/image";
 import tech from "../../../public/tech.svg";
 import Link from "next/link";
+import { FormEvent, useEffect, useState } from "react";
+import { logOut, login, onAuthChanged } from "@/firebase/authService";
+import { User } from "firebase/auth";
+import { useRouter } from "next/navigation";
+
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [user, setUser] = useState<User | null>();
+  const router = useRouter();
+
+  async function handlerLogin(event: FormEvent) {
+    event.preventDefault();
+    const form = event.target as HTMLFormElement;
+    const emailInput = form.querySelector(
+      'input[type="email"]'
+    ) as HTMLInputElement;
+    const passwordInput = form.querySelector(
+      'input[type="password"]'
+    ) as HTMLInputElement;
+    if (emailInput && passwordInput) {
+      login(emailInput.value, passwordInput.value)
+        .then((user) => {
+          console.log(user);
+        })
+        .catch((error) => alert("error aqui"));
+    } else {
+      alert("Campos de email e senha não encontrados!");
+    }
+  }
+  useEffect(() => {
+    function unsubscribe() {
+      return onAuthChanged((user) => {
+        setUser(user);
+        if (user) {
+          router.push("/cadastro");
+        } else {
+          setUser(user);
+        }
+      });
+    }
+    return unsubscribe();
+  }, []);
+
+  if (user) {
+    return (
+      <div onSubmit={handlerLogin}>
+        <div onClick={() => logOut()}>sair</div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex">
       <div className="w-1/2 bg-background ">
@@ -18,15 +71,17 @@ export default function Login() {
         </span>
 
         <div className="flex items-center justify-center p-10 ">
-          <form action="submit">
+          <form action="submit" onSubmit={handlerLogin}>
             <input
               type="email"
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Digite seu Email"
               required
               className="w-[400px] flex flex-col h-[2.1rem] bg-transparent border rounded-lg border-solid pl-2 text-white"
             />
             <input
               type="password"
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="Digite sua Senha"
               required
               className="w-[400px] mt-16 h-[2.1rem] bg-transparent border rounded-lg border-solid pl-2 text-white"
