@@ -6,6 +6,7 @@ import tech from "../../../public/tech.svg";
 import { FaEye } from "react-icons/fa";
 import { useEffect, useState, useRef, FormEvent } from "react";
 import { api } from "../../service/axios";
+import Logout from "@/firebase/logout";
 
 interface CustomerProps {
   id: string;
@@ -114,10 +115,14 @@ export default function Login() {
             <div className="flex items-center justify-center pt-16">
               <button
                 type="submit"
-                className="w-[200px] h-[40px] font-semibold rounded-lg text-gray-200 bg-green-600"
+                className="w-[200px] h-[40px] font-semibold rounded-lg text-gray-200 bg-emerald-950 hover:bg-emerald-700 hover:opacity-85"
               >
                 Cadastrar
               </button>
+            </div>
+            <div className="pt-5">
+              {" "}
+              <Logout />
             </div>
           </form>
         </div>
