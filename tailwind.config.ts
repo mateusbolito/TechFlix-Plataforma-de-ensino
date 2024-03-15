@@ -21,6 +21,9 @@ const config: Config = {
       colors: {
         background: " #0f0f0f",
       },
+      maxWidth: {
+        "7xl": "82rem",
+      },
     },
   },
   plugins: [],

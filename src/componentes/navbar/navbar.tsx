@@ -13,16 +13,15 @@ export default function NavBar() {
         <div className="flex flex-row items-center justify-center max-w-7xl w-full">
           <form>
             <div className="absolute  mt-3 pl-3 flex items-center justify-center pointer-events-none">
-              <FiSearch className="" />
+              <FiSearch />
             </div>
             <input
               type="search"
-              className="w-[470px] p-2.5 pl-10 cursor-pointer  bg-zinc-950 border-none  outline-none  h-10 bg-transparent border border-b-gray-300 rounded-lg"
+              className="w-[470px] p-2.5 pl-10 cursor-pointer  bg-zinc-950 border-none  outline-none  h-11 bg-transparent border border-b-gray-300 rounded-lg"
               placeholder="Busque assuntos e aulas"
             />
           </form>
         </div>
-        <div className="flex "></div>
       </nav>
     </div>
   );
