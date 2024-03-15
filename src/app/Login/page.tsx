@@ -35,7 +35,7 @@ export default function Login() {
     if (emailInput && passwordInput) {
       login(emailInput.value, passwordInput.value)
         .then((user) => {
-          router.push("/cadastro");
+          router.push("/interfacehome");
           console.log(user);
         })
         .catch((error) => alert("error aqui"));
