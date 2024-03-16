@@ -15,14 +15,7 @@ const Logout: React.FC = () => {
       });
   };
 
-  return (
-    <button
-      className=" text-green-300 bg-red-800 w-[200px] h-[40px] rounded-lg "
-      onClick={handleLogout}
-    >
-      Sair
-    </button>
-  );
+  return <button onClick={handleLogout}>Sair da Conta</button>;
 };
 
 export default Logout;
