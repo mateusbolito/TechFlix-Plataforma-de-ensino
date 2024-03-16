@@ -5,15 +5,15 @@ import { FiSearch } from "react-icons/fi";
 export default function NavBar() {
   return (
     <div className="text-white  flex items-center justify-center border-b-[1px] border-emerald-950 ">
-      <nav className="w-full h-20 bg-background opacity-80 shadow-xl flex p-4">
+      <nav className="w-full h-20 bg-background opacity-80  flex p-4">
         <div className="flex items-center justify-center w-[300px]  ">
           <Image src={tech} width={200} height={200} alt="aaa" />
         </div>
 
-        <div className="flex flex-row items-center justify-center max-w-7xl w-full">
+        <div className="flex relative flex-row items-center justify-center max-w-7xl w-full">
           <form>
-            <div className="absolute  mt-3 pl-3 flex items-center justify-center pointer-events-none">
-              <FiSearch />
+            <div className="absolute  mt-3 pl-3 ">
+              <FiSearch size={20} />
             </div>
             <input
               type="search"
@@ -22,6 +22,7 @@ export default function NavBar() {
             />
           </form>
         </div>
+        <h1 className="text-green-400">aa</h1>
       </nav>
     </div>
   );
