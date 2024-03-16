@@ -4,7 +4,7 @@ import { FiSearch } from "react-icons/fi";
 
 export default function NavBar() {
   return (
-    <div className="text-white  flex items-center justify-center border-b-[1px] border-emerald-950 ">
+    <div className="text-white  flex items-center justify-center border-b-[1px] border-zinc-600 ">
       <nav className="w-full h-20 bg-background opacity-80  flex p-4">
         <div className="flex items-center justify-center w-[300px]  ">
           <Image src={tech} width={200} height={200} alt="aaa" />
@@ -22,7 +22,11 @@ export default function NavBar() {
             />
           </form>
         </div>
-        <h1 className="text-green-400">aa</h1>
+        <div className=" flex items-center gap-3">
+          <button className="bg-emerald-400 rounded-2xl w-12 h-12"></button>
+          <button className="bg-emerald-400 rounded-2xl w-12 h-12">aa</button>
+          <button className="bg-emerald-400 rounded-2xl w-12 h-12">aa</button>
+        </div>
       </nav>
     </div>
   );
