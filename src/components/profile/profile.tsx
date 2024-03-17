@@ -9,13 +9,13 @@ interface ProfileProps {
 }
 export default function Profile({ closeModal }: ProfileProps) {
   return (
-    <div className="flex top-0 right-16 pt-3 fixed items-center justify-center">
-      <div className="  w-[300px] h-[260px] bg-zinc-950 rounded-lg shadow-lg  mt-20">
+    <div className="flex top-0 right-16 lg:right-[20px] 2xl:right-24  pt-3 fixed items-center justify-center">
+      <div className=" lg:w-[300px] h-[260px] bg-zinc-950 rounded-lg shadow-lg  mt-20">
         <div className="text-white">
           <h2 className="text-center  flex items-center justify-center p-3 border-b-[1px] border-zinc-600 ">
             nome: mateus bolito
             <span className="ml-12 cursor-pointer" onClick={closeModal}>
-              X
+              <p className="text-red-400">X</p>
             </span>
           </h2>
 
