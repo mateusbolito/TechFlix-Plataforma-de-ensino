@@ -48,7 +48,7 @@ export default function Login() {
       {
         name: nameRef.current.value,
         email: emailRef.current.value,
-        passRef: emailRef.current.value,
+        password: passRef.current.value,
       },
       {
         headers: {
@@ -100,6 +100,7 @@ export default function Login() {
                 placeholder="Digite sua Senha"
                 required
                 className="w-[400px] mt-16 h-[2.1rem] bg-transparent border rounded-lg border-solid pl-2 text-white"
+                ref={passRef}
               />
               <FaEye
                 color="#fff"
@@ -113,6 +114,7 @@ export default function Login() {
                 placeholder="Confirme sua Senha"
                 required
                 className="w-[400px] mt-16 h-[2.1rem] bg-transparent border rounded-lg border-solid pl-2 text-white"
+                ref={passRef}
               />
               <FaEye
                 onClick={visiblePassword}
