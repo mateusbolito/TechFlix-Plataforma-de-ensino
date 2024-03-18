@@ -25,7 +25,7 @@ export default function Login() {
   }, []);
 
   async function getAPI() {
-    const response = await api.get("/customers");
+    const response = await api.get("/register");
     setData(response.data);
   }
   const visiblePassword = () => {
