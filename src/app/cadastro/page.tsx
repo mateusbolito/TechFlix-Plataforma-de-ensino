@@ -13,6 +13,7 @@ interface CustomerProps {
   name: string;
   email: string;
   status: boolean;
+  password: string;
 }
 export default function Login() {
   const [showpassword, setShowpassword] = useState(false);
