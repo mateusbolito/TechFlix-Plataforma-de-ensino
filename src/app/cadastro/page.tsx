@@ -35,7 +35,12 @@ export default function Login() {
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
-    if (!nameRef.current?.value || !emailRef.current?.value) return;
+    if (
+      !nameRef.current?.value ||
+      !emailRef.current?.value ||
+      !passRef.current?.value
+    )
+      return;
 
     const response = await api.post(
       "/register",
@@ -53,6 +58,7 @@ export default function Login() {
     );
     nameRef.current.value = "";
     emailRef.current.value = "";
+    passRef.current.value = "";
   }
 
   return (
