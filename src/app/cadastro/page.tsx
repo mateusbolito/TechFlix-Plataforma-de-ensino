@@ -19,13 +19,14 @@ export default function Login() {
   const [datas, setData] = useState<CustomerProps[]>([]);
   const nameRef = useRef<HTMLInputElement | null>(null);
   const emailRef = useRef<HTMLInputElement | null>(null);
+  const passRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     getAPI();
   }, []);
 
   async function getAPI() {
-    const response = await api.get("/register");
+    const response = await api.get("/customers");
     setData(response.data);
   }
   const visiblePassword = () => {
@@ -37,10 +38,11 @@ export default function Login() {
     if (!nameRef.current?.value || !emailRef.current?.value) return;
 
     const response = await api.post(
-      "/customer",
+      "/register",
       {
         name: nameRef.current.value,
         email: emailRef.current.value,
+        passRef: emailRef.current.value,
       },
       {
         headers: {
