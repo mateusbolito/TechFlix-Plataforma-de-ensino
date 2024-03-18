@@ -15,7 +15,7 @@ interface CustomerProps {
   status: boolean;
   password: string;
 }
-export default function Login() {
+export default function Register() {
   const [showpassword, setShowpassword] = useState(false);
   const [datas, setData] = useState<CustomerProps[]>([]);
   const nameRef = useRef<HTMLInputElement | null>(null);
@@ -126,7 +126,7 @@ export default function Login() {
             <div className="flex items-center justify-center pt-16">
               <button
                 type="submit"
-                className="w-[200px] h-[40px] font-semibold rounded-lg text-gray-200 bg-emerald-950 hover:bg-emerald-700 hover:opacity-85"
+                className="w-[200px] h-[40px] font-semibold rounded-lg text-gray-200 bg-green-700 hover:bg-emerald-700 hover:opacity-85"
               >
                 Cadastrar
               </button>

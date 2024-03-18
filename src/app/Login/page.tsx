@@ -153,7 +153,7 @@ export default function Login() {
             </div>
 
             <div className="flex flex-col  items-center justify-center pt-16">
-              <button className="w-[200px] h-[40px] font-semibold rounded-lg text-gray-200 bg-emerald-950 hover:bg-emerald-700 hover:opacity-85">
+              <button className="w-[200px] h-[40px] font-semibold rounded-lg text-gray-200 bg-green-700 hover:bg-emerald-700 hover:opacity-85">
                 Acessar
               </button>
               <button

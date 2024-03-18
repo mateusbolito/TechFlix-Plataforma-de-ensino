@@ -39,11 +39,11 @@ export default function NavBar() {
           </form>
         </div>
         <div className=" flex  flex-row items-center gap-5">
-          <button className="hover:bg-emerald-700 flex items-center justify-center rounded-2xl w-12 h-12">
-            <DiAptana size={30} color="#022c22" />
+          <button className="hover:bg-zinc-800 flex items-center justify-center rounded-2xl w-12 h-12">
+            <DiAptana size={30} color="#15803d" />
           </button>
-          <button className="hover:bg-emerald-700 flex items-center justify-center rounded-2xl w-12 h-12">
-            <MdNotificationsActive size={30} color="#022c22" />
+          <button className="hover:bg-zinc-800 flex items-center justify-center rounded-2xl w-12 h-12">
+            <MdNotificationsActive size={30} color="#15803d" />
           </button>
           <button
             className=" flex items-center justify-center rounded-2xl w-12 h-12"
