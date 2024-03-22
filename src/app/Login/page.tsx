@@ -5,7 +5,7 @@ import Image from "next/image";
 import tech from "../../../public/tech.svg";
 import Link from "next/link";
 import { FormEvent, use, useEffect, useState } from "react";
-import { logOut, login, onAuthChanged } from "@/firebase/authService";
+
 import {
   GithubAuthProvider,
   User,
@@ -16,100 +16,30 @@ import {
   signOut,
 } from "firebase/auth";
 import { useRouter } from "next/navigation";
+import axios from "axios";
+import router from "next/router";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState<User | null>();
-  const router = useRouter();
+  const [error, setError] = useState("");
 
-  async function handlerLogin(event: FormEvent) {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    const form = event.target as HTMLFormElement;
-    const emailInput = form.querySelector(
-      'input[type="email"]'
-    ) as HTMLInputElement;
-    const passwordInput = form.querySelector(
-      'input[type="password"]'
-    ) as HTMLInputElement;
-    if (emailInput && passwordInput) {
-      login(emailInput.value, passwordInput.value)
-        .then((user) => {
-          router.push("/interfacehome");
-          console.log(user);
-        })
-        .catch((error) => alert("error aqui"));
-    } else {
-      alert("Campos de email e senha não encontrados!");
+    try {
+      const response = await axios.post("http://localhost:3333/login", {
+        email,
+        password,
+      });
+      const token = response.data.token;
+
+      localStorage.setItem("token", token);
+      window.location.href = "/home";
+    } catch (error) {
+      setError("Usuário não autenticado. Verifique suas credenciais.");
+      console.log(error);
     }
-  }
-  useEffect(() => {
-    function unsubscribe() {
-      return onAuthChanged((user) => {
-        setUser(user);
-        if (user) {
-          setUser(user);
-        } else {
-          setUser(user);
-        }
-      });
-    }
-    return unsubscribe();
-  }, []);
-
-  const provider = new GithubAuthProvider();
-  function LoginGithub() {
-    const auth = getAuth();
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const credential = GithubAuthProvider.credentialFromResult(result);
-        const token = credential?.accessToken;
-        const user = result.user;
-        console.log(user);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        const email = error.customData.email;
-
-        const credential = GithubAuthProvider.credentialFromError(error);
-      });
-  }
-  function LogOutGitHub() {
-    const auth = getAuth();
-    signOut(auth)
-      .then(() => {
-        router.push("/cadastro");
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  }
-
-  // const auth = getAuth();
-  // signInWithRedirect(auth, provider);
-
-  // function redirectUser() {
-  //   const auth = getAuth();
-  //   getRedirectResult(auth)
-  //     .then((result) => {
-  //       const credential = GithubAuthProvider.credentialFromResult(result);
-  //       if (credential) {
-  //         const token = credential.accessToken;
-  //       }
-  //       const user = result?.user;
-  //       router.push("/cadastro");
-  //     })
-  //     .catch((error) => {
-  //       const errorCode = error.code;
-  //       const errorMessage = error.message;
-  //       // The email of the user's account used.
-  //       const email = error.customData?.email; // Use optional chaining to access email safely
-  //       // The AuthCredential type that was used.
-  //       const credential = GithubAuthProvider.credentialFromError(error);
-  //     });
-  //   redirectUser();
-  // }
+  };
 
   return (
     <div className="flex">
@@ -126,7 +56,7 @@ export default function Login() {
         </span>
 
         <div className="flex items-center justify-center p-10 ">
-          <form action="submit" onSubmit={handlerLogin}>
+          <form action="submit" onSubmit={handleSubmit}>
             <input
               type="email"
               onChange={(e) => setEmail(e.target.value)}
@@ -158,7 +88,6 @@ export default function Login() {
               </button>
               <button
                 type="button"
-                onClick={LoginGithub}
                 className=" text-white mt-4 w-[200px] bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 me-2 mb-2"
               >
                 <svg

@@ -7,6 +7,8 @@ import { FaEye } from "react-icons/fa";
 import { useEffect, useState, useRef, FormEvent } from "react";
 import { api } from "../../service/axios";
 import Logout from "@/firebase/logout";
+import Login from "../Login/page";
+import router, { useRouter } from "next/router";
 
 interface CustomerProps {
   id: string;
@@ -33,33 +35,34 @@ export default function Register() {
   const visiblePassword = () => {
     setShowpassword(!showpassword);
   };
-
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
-    if (
-      !nameRef.current?.value ||
-      !emailRef.current?.value ||
-      !passRef.current?.value
-    )
-      return;
+    const nameInput = nameRef.current?.value;
+    const emailInput = emailRef.current?.value;
+    const passInput = passRef.current?.value;
 
-    const response = await api.post(
-      "/register",
-      {
-        name: nameRef.current.value,
-        email: emailRef.current.value,
-        password: passRef.current.value,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
+    if (!nameInput || !emailInput || !passInput) {
+      alert("Por favor, preencha todos os campos.");
+      return;
+    }
+
+    try {
+      const response = await api.post("/register", {
+        name: nameInput,
+        email: emailInput,
+        password: passInput,
+      });
+
+      if (response.status === 200) {
+        window.location.href = "/";
+      } else {
+        const data = await response.data();
+        alert(data.error || "Erro ao fazer cadastro.");
       }
-    );
-    nameRef.current.value = "";
-    emailRef.current.value = "";
-    passRef.current.value = "";
+    } catch (error) {
+      console.error("Erro ao fazer cadastro:", error);
+      alert("Erro ao fazer cadastro. Por favor, tente novamente mais tarde.");
+    }
   }
 
   return (
@@ -109,13 +112,13 @@ export default function Register() {
               />
             </div>
             <div className="relative">
-              <input
+              {/* <input
                 type={showpassword ? "text" : "password"}
                 placeholder="Confirme sua Senha"
                 required
                 className="w-[400px] mt-16 h-[2.1rem] bg-transparent border rounded-lg border-solid pl-2 text-white"
                 ref={passRef}
-              />
+              /> */}
               <FaEye
                 onClick={visiblePassword}
                 color="#fff"
