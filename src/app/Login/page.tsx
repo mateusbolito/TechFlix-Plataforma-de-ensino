@@ -32,7 +32,7 @@ export default function Login() {
         password,
       });
       const token = response.data.token;
-
+      console.log(token);
       localStorage.setItem("token", token);
       window.location.href = "/home";
     } catch (error) {
