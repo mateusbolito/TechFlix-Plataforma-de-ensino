@@ -1,6 +1,16 @@
 import Image from "next/image";
 import LayoutNav from "../../layouts/nav";
+import CardHome from "@/components/CardHome/CardHome";
+import next from "../../../public/next.webp";
 import front from "../../../public/front.webp";
+import node from "../../../public/node.webp";
+
+const languages = [
+  { name: "Front-end", image: front, route: "front" },
+  { name: "Next.js", image: next, route: "front" },
+  { name: "Node.js", image: node, route: "front" },
+];
+
 export default function InterFaceHome() {
   return (
     <LayoutNav>
@@ -14,6 +24,8 @@ export default function InterFaceHome() {
           <h2 className="text-2xl pt-4 text-gray-200">Categorias</h2>
         </div>
       </div>
+
+      <CardHome languages={languages} />
     </LayoutNav>
   );
 }
