@@ -34,7 +34,7 @@ export default function Login() {
       const token = response.data.token;
       console.log(token);
       localStorage.setItem("token", token);
-      window.location.href = "/home";
+      window.location.href = "/interfacehome";
     } catch (error) {
       setError("Usuário não autenticado. Verifique suas credenciais.");
       console.log(error);
