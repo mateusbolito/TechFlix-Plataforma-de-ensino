@@ -6,9 +6,6 @@ import tech from "../../../public/tech.svg";
 import { FaEye } from "react-icons/fa";
 import { useEffect, useState, useRef, FormEvent } from "react";
 import { api } from "../../service/axios";
-import Logout from "@/firebase/logout";
-import Login from "../Login/page";
-import router, { useRouter } from "next/router";
 
 interface CustomerProps {
   id: string;
@@ -133,10 +130,6 @@ export default function Register() {
               >
                 Cadastrar
               </button>
-            </div>
-            <div className="pt-5">
-              {" "}
-              <Logout />
             </div>
           </form>
         </div>

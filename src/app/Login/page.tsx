@@ -4,20 +4,9 @@ import teste from "../../../public/teste.svg";
 import Image from "next/image";
 import tech from "../../../public/tech.svg";
 import Link from "next/link";
-import { FormEvent, use, useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 
-import {
-  GithubAuthProvider,
-  User,
-  getAuth,
-  getRedirectResult,
-  signInWithPopup,
-  signInWithRedirect,
-  signOut,
-} from "firebase/auth";
-import { useRouter } from "next/navigation";
 import axios from "axios";
-import router from "next/router";
 
 export default function Login() {
   const [email, setEmail] = useState("");

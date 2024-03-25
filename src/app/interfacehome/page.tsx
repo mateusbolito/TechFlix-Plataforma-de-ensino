@@ -1,4 +1,3 @@
-import Image from "next/image";
 import LayoutNav from "../../layouts/nav";
 import CardHome from "@/components/CardHome/CardHome";
 import next from "../../../public/next.webp";
