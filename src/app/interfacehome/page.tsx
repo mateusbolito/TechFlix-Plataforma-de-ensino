@@ -3,6 +3,7 @@ import CardHome from "@/components/CardHome/CardHome";
 import next from "../../../public/next.webp";
 import front from "../../../public/front.webp";
 import node from "../../../public/node.webp";
+import Destaques from "@/components/destaques/destaques";
 
 const languages = [
   { name: "Front-end", image: front, route: "front" },
@@ -25,6 +26,8 @@ export default function InterFaceHome() {
       </div>
 
       <CardHome languages={languages} />
+
+      <Destaques />
     </LayoutNav>
   );
 }

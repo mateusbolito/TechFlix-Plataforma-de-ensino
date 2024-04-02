@@ -20,6 +20,8 @@ const config: Config = {
       },
       colors: {
         background: " #0f0f0f",
+        colorsecondary: "rgb(41, 41, 46, 0.10);",
+        colorViewProfileButon: "rgb(141 141 153 );",
       },
       maxWidth: {
         "7xl": "82rem",
