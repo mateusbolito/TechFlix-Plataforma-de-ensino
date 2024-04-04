@@ -1,6 +1,37 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import node from "../../../public/node.webp";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-creative";
+import "swiper/css/autoplay";
+import { EffectCreative } from "swiper/modules";
 
 export default function Destaques() {
+  const data = [
+    {
+      id: "1",
+      image:
+        "https://app.rocketseat.com.br/_next/image?url=%2Fassets%2Fimages%2Fdashboard%2Fformacao-c-sharp-desktop.png&w=1920&q=75",
+    },
+    {
+      id: "2",
+      image:
+        "https://app.rocketseat.com.br/_next/image?url=%2Fassets%2Fimages%2Fdashboard%2Fnlw-unite-desktop.png&w=1920&q=75",
+    },
+    {
+      id: "3",
+      image:
+        "https://app.rocketseat.com.br/_next/image?url=%2Fassets%2Fimages%2Fdashboard%2Fnlw-unite-desktop.png&w=1920&q=75",
+    },
+  ];
+
   return (
     <div className="flex items-center justify-center flex-col gap-4">
       <h3 className="text-xl size-4 text-gray-200 mb-3 flex justify-start items-end max-w-screen-xl w-[95%] xl:w-[1200px] xl:text-center">
@@ -31,7 +62,25 @@ export default function Destaques() {
           </div>
         </div>
 
-        <div className="flex flex-col rounded-md  border border-zinc-800  w-[600px] h-[315px] "></div>
+        <div className="flex flex-col rounded-md  border border-zinc-800  w-[600px] h-[315px] ">
+          <Swiper
+            slidesPerView={1}
+            navigation
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 3500 }}
+            className="w-[599px] rounded-md"
+            modules={[Pagination, Navigation, Autoplay]}
+          >
+            {data.map((item) => (
+              <SwiperSlide key={item.id}>
+                <img
+                  src={item.image}
+                  className="w-[600px] h-[315px] object-cover"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
     </div>
   );
