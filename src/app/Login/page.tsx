@@ -12,9 +12,10 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
+  const [loading, setLoading] = useState(false);
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
+    setLoading(true);
     try {
       const response = await axios.post("http://localhost:3333/login", {
         email,
@@ -28,6 +29,7 @@ export default function Login() {
       setError("Usuário não autenticado. Verifique suas credenciais.");
       console.log(error);
     }
+    setLoading(false);
   };
 
   return (
@@ -73,7 +75,13 @@ export default function Login() {
 
             <div className="flex flex-col  items-center justify-center pt-16">
               <button className="w-[200px] h-[40px] font-semibold rounded-lg text-gray-200 bg-green-700 hover:bg-emerald-700 hover:opacity-85">
-                Acessar
+                {loading ? (
+                  <span className="w-[200px] h-[40px] font-semibold rounded-lg text-gray-200 bg-green-700">
+                    Acessando...
+                  </span>
+                ) : (
+                  "Acessar"
+                )}
               </button>
               <button
                 type="button"

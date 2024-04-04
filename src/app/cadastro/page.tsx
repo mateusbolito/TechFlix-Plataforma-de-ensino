@@ -20,6 +20,7 @@ export default function Register() {
   const nameRef = useRef<HTMLInputElement | null>(null);
   const emailRef = useRef<HTMLInputElement | null>(null);
   const passRef = useRef<HTMLInputElement | null>(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getAPI();
@@ -34,6 +35,7 @@ export default function Register() {
   };
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
+    setLoading(true);
     const nameInput = nameRef.current?.value;
     const emailInput = emailRef.current?.value;
     const passInput = passRef.current?.value;
@@ -60,6 +62,7 @@ export default function Register() {
       console.error("Erro ao fazer cadastro:", error);
       alert("Erro ao fazer cadastro. Por favor, tente novamente mais tarde.");
     }
+    setLoading(false);
   }
 
   return (
@@ -124,11 +127,8 @@ export default function Register() {
             </div>
 
             <div className="flex items-center justify-center pt-16">
-              <button
-                type="submit"
-                className="w-[200px] h-[40px] font-semibold rounded-lg text-gray-200 bg-green-700 hover:bg-emerald-700 hover:opacity-85"
-              >
-                Cadastrar
+              <button className="w-[200px] h-[40px] font-semibold rounded-lg text-gray-200 bg-green-700 hover:bg-emerald-700 hover:opacity-85">
+                {loading ? <span>Cadastrando Usuario...</span> : "Cadastrar"}
               </button>
             </div>
           </form>
