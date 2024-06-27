@@ -16,7 +16,7 @@ export default function InterFaceHome() {
     <LayoutNav>
       <div className="w-full h-full flex items-center justify-center ">
         <h1 className="text-2xl pt-6 text-gray-200">
-          Bem Vindo, <span className="text-2xl text-green-700">Mateus</span>
+          Bem Vindo, <span className="text-2xl text-roseColor">Mateus</span>
         </h1>
       </div>
       <div className="text-white w-full flex items-center justify-center ">

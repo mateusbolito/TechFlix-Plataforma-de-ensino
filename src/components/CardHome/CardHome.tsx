@@ -22,7 +22,7 @@ const CardHome: FC<CardHomeProps> = ({ languages }) => {
             className="flex items-center justify-center bg-colorsecondary"
           >
             <Link href={language.route}>
-              <div className="w-[200px] h-[150px] bg-transparent border border-zinc-800 hover:border-green-700 rounded-lg ">
+              <div className="w-[200px] h-[150px] bg-transparent border border-zinc-800 hover:border-roseColor rounded-lg ">
                 <h1 className="text-center text-white pt-2">{language.name}</h1>
                 <div className="flex items-center justify-center ">
                   <Image

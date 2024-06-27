@@ -3,9 +3,10 @@
 import teste from "../../../public/teste.svg";
 import Image from "next/image";
 import tech from "../../../public/tech.svg";
-import { FaEye } from "react-icons/fa";
+import { FaAngleLeft, FaEye } from "react-icons/fa";
 import { useEffect, useState, useRef, FormEvent } from "react";
 import { api } from "../../service/axios";
+import Link from "next/link";
 
 interface CustomerProps {
   id: string;
@@ -67,8 +68,13 @@ export default function Register() {
 
   return (
     <div className="flex">
-      <div className="w-1/2 bg-background ">
+      <div className="w-1/2 bg-gray-950 ">
         <div className="flex items-center justify-center h-20 mt-10">
+          <div className="text-white">
+            <Link href={"/Login"}>
+              <FaAngleLeft size={30} />
+            </Link>
+          </div>
           <Image src={tech} width={300} height={20} alt="tech" />
         </div>
         <h1 className="text-white text-3xl pt-14  flex items-center justify-center">

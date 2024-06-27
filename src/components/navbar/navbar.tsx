@@ -21,7 +21,7 @@ export default function NavBar() {
 
   return (
     <div className="text-white  flex items-center justify-center border-b-[1px] border-zinc-600 ">
-      <nav className="w-full h-20 bg-background opacity-80  flex p-4">
+      <nav className="w-full h-20 bg-gray-950 opacity-80  flex p-4">
         <div className="flex items-center justify-center w-[300px]  ">
           <Image src={tech} width={200} height={200} alt="aaa" />
         </div>
@@ -40,10 +40,10 @@ export default function NavBar() {
         </div>
         <div className=" flex  flex-row items-center gap-5">
           <button className="hover:bg-zinc-800 flex items-center justify-center rounded-2xl w-12 h-12">
-            <DiAptana size={30} color="#15803d" />
+            <DiAptana size={30} color="#D8B4FE" />
           </button>
           <button className="hover:bg-zinc-800 flex items-center justify-center rounded-2xl w-12 h-12">
-            <MdNotificationsActive size={30} color="#15803d" />
+            <MdNotificationsActive size={30} color="#D8B4FE" />
           </button>
           <button
             className=" flex items-center justify-center rounded-2xl w-12 h-12"

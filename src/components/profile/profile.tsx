@@ -24,7 +24,7 @@ export default function Profile({ closeModal }: ProfileProps) {
 
           <div className="h-10 mt-2">
             <h2 className="flex items-center gap-2  cursor-pointer hover:bg-zinc-800">
-              <DiAptana size={27} className="ml-4 " color="#15803d" />
+              <DiAptana size={27} className="ml-4 " color="#D8B4FE" />
               <div className="flex flex-col">
                 <span>Minha Conta</span>
                 <p className="text-[10px] text-zinc-300">gerencia sua conta</p>
@@ -33,7 +33,7 @@ export default function Profile({ closeModal }: ProfileProps) {
           </div>
           <div className="h-10 mt-2">
             <h2 className="flex items-center gap-2  cursor-pointer hover:bg-zinc-800">
-              <TbCertificate size={27} className="ml-4 " color="#15803d" />
+              <TbCertificate size={27} className="ml-4 " color="#D8B4FE" />
               <div className="flex flex-col">
                 <span>Certificados</span>
                 <p className="text-[10px] text-zinc-300">
@@ -44,7 +44,7 @@ export default function Profile({ closeModal }: ProfileProps) {
           </div>
           <div className="h-10 mt-2">
             <h2 className="flex items-center gap-2  cursor-pointer hover:bg-zinc-800">
-              <SlPresent size={27} className="ml-4 " color="#15803d" />
+              <SlPresent size={27} className="ml-4 " color="#D8B4FE" />
               <div className="flex flex-col">
                 <span>Indique e ganhe</span>
                 <p className="text-[10px] text-zinc-300">
